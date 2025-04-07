@@ -1,7 +1,6 @@
-import React , {createContext , useContext , useState , useEffect} from 'react'
+import React, { useState, useEffect } from 'react';
 
-function ProductCard({productObj}) {
-
+function ProductCard({ productObj }) {
   const productImageLink = productObj.image;
   const productLink = productObj.link;
   const productTitle = productObj.name;
@@ -11,14 +10,14 @@ function ProductCard({productObj}) {
   const productDiscountedPrice = productObj.discount_price;
 
   return (
-    <div className="my-[1rem] mx-[1rem] border border-gray-300 rounded-lg p-4 max-w-xs font-sans shadow-md hover:-translate-y-[2rem] transition duration-300">
-      <img 
-        src={productImageLink} 
-        alt="Sorry , Image Not Found :(" 
+    <div className="my-[1rem] mx-[1rem] border border-gray-300 rounded-lg p-4 max-w-xs font-sans shadow-md transition duration-300">
+      <img
+        src={productImageLink}
+        alt="Sorry , Image Not Found :("
         className="w-full h-64  rounded"
       />
-      <a 
-        href={productLink} 
+      <a
+        href={productLink}
         className="font-bold text-base text-blue-700 block my-3  decoration-(none)"
         target="_blank"
         rel="noopener noreferrer"
@@ -26,7 +25,7 @@ function ProductCard({productObj}) {
         {productTitle}
       </a>
       <div className="mb-2 text-yellow-500">
-        {"★★★★★☆☆☆☆☆".slice(0, productRating) + "☆☆☆☆☆".slice(0, 5 - productRating)}
+        {'★★★★★☆☆☆☆☆'.slice(0, productRating) + '☆☆☆☆☆'.slice(0, 5 - productRating)}
         <span className="text-gray-600 ml-2">({productNumberOfRatings})</span>
       </div>
       <div className="text-sm text-gray-700">
@@ -34,7 +33,7 @@ function ProductCard({productObj}) {
         <span className="text-red-700 font-semibold">{productDiscountedPrice}</span>
       </div>
     </div>
-  )
+  );
 }
 
-export default ProductCard
+export default ProductCard;

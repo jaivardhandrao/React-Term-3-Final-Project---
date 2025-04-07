@@ -18,8 +18,12 @@ function Search() {
     // Set loading to true to indicate that a search is in progress
     setIsLoading(true);
   
-    // Fetch the CSV file from the public/assets directory
-    fetch('/public/all_data.csv')
+    // Fetch the CSV file from the public/SpllitedDirectory directory
+    // I needed to split the csv file into 10 parts because the csv file was too large
+
+    for(let i = 1; i <= 10; i++){
+
+      fetch('/Splitted/Amazon-Products_' + i + '.csv')
       // Convert the response to plain text (CSV content)
       .then(response => response.text())
       // Once we have the CSV text, parse it
@@ -27,44 +31,36 @@ function Search() {
         Papa.parse(csvText, {
           // The first row in the CSV contains the column headers
           header: true,
-  
+          
           // This function is called once parsing is complete
           complete: (results) => {
             // Convert search input like "iphone cover" into an array of words: ["iphone", "cover"]
             const keywords = searchVal.toLowerCase().split(' ');
-  
+            
             // Filter the parsed data to find items that match all keywords
             // This is done by checking if every keyword is present somewhere in the item
             const found = results.data.filter(item => {
               // Flatten all values of the product into a single string and convert to lowercase
               const itemText = Object.values(item).join(' ').toLowerCase();
-  
+              
               // Check if every keyword is present somewhere in the item text
               return keywords.every(word => itemText.includes(word));
             });
-  
+            
             // Update the search array state with the filtered results
-            setSearchArr(found);
-  
+            setSearchArr((prev)=>{
+              return [...prev , ...found]
+            });
+            
             // Set loading to false as the search is complete
             setTimeout(() => {
               setIsLoading(false);
-            }, 1500);
+            }, 2500);
           }
         });
       });
+    }
   }
-
-
-  //This useEffect is to update loading state correctly when the components are mounted
-  useEffect(()=>{
-    setIsLoading(true);
-    console.log(searchArr)
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1500);
-  } , [searchArr])
-
 
 
   function renderProducts() {
@@ -122,10 +118,12 @@ function Search() {
         
         <div className="loading flex justify-center">
           {isLoading && (
-            <div className="flex flex-col items-center">
-              <div className="w-16 h-16 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin"></div>
-              <p className="mt-4 text-indigo-600 font-medium">Searching products...</p>
-            </div>
+                      <div className="flex flex-col items-center">
+            <div className="w-16 h-16 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin"></div>
+            <p className="mt-4 text-[1.1rem] text-indigo-600 font-medium">Searching products...</p>
+            <br/>
+            <p className="mt-2 text-[1.3rem] text-gray-700">Till then enjoy the skeleton cards below :&#41;</p>
+          </div>
           )}
         </div>
         
