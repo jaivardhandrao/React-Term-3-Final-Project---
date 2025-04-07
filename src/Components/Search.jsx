@@ -4,7 +4,7 @@ import ProductCard from './ProductCard';
 import SkeletonProductCard from './SkeletonProductCard';
 
 function Search() {
-  // State to store the search input
+  // State to store the search value
   const [searchVal, setSearchVal] = useState("");
 
   // State to track if a search is in progress
