@@ -1,45 +1,91 @@
 import React, { useEffect, useState } from 'react';
 import Papa from 'papaparse';
 import ProductCard from './ProductCard';
+import SkeletonProductCard from './SkeletonProductCard';
 
 function Search() {
+  // State to store the search input
   const [searchVal, setSearchVal] = useState("");
+
+  // State to track if a search is in progress
   const [isLoading, setIsLoading] = useState(false);
+
+  //The array to store the search results
   const [searchArr , setSearchArr] = useState([])
 
 
   function handleSearch() {
-
-    // setSearchArr([]);
+    // Set loading to true to indicate that a search is in progress
     setIsLoading(true);
   
-    fetch('public/all_data.csv')
+    // Fetch the CSV file from the public/assets directory
+    fetch('/public/all_data.csv')
+      // Convert the response to plain text (CSV content)
       .then(response => response.text())
+      // Once we have the CSV text, parse it
       .then(csvText => {
         Papa.parse(csvText, {
+          // The first row in the CSV contains the column headers
           header: true,
+  
+          // This function is called once parsing is complete
           complete: (results) => {
-            const found = results.data.filter(item =>
-              Object.values(item).some(value =>
-                String(value).toLowerCase().includes(searchVal.toLowerCase())
-              )
-            );
+            // Convert search input like "iphone cover" into an array of words: ["iphone", "cover"]
+            const keywords = searchVal.toLowerCase().split(' ');
+  
+            // Filter the parsed data to find items that match all keywords
+            // This is done by checking if every keyword is present somewhere in the item
+            const found = results.data.filter(item => {
+              // Flatten all values of the product into a single string and convert to lowercase
+              const itemText = Object.values(item).join(' ').toLowerCase();
+  
+              // Check if every keyword is present somewhere in the item text
+              return keywords.every(word => itemText.includes(word));
+            });
+  
+            // Update the search array state with the filtered results
             setSearchArr(found);
+  
+            // Set loading to false as the search is complete
+            setTimeout(() => {
+              setIsLoading(false);
+            }, 1500);
           }
         });
       });
   }
 
 
+  //This useEffect is to update loading state correctly when the components are mounted
   useEffect(()=>{
     setIsLoading(true);
     console.log(searchArr)
-    setIsLoading(false);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
   } , [searchArr])
 
 
 
+  function renderProducts() {
+    if (searchArr.length > 0) {
+      return searchArr.map((product, index) => (
+        <ProductCard key={index} productObj={product} />
+      ));
+    } else {
+      return "No products found";
+    }
+  }
 
+  function renderSkeleton() {
+    return (
+      <>
+        {Array.from({ length: 15 }).map((item, index) => (
+          <SkeletonProductCard key={index} />
+        ))}
+      </>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-purple-50 pt-8 pb-16 px-4">
@@ -84,12 +130,9 @@ function Search() {
         </div>
         
         {/* Products Grid */}
-        <div className="products flex gap-[2rem] flex-wrap">
-            { 
-            (searchArr.length > 0) ? 
-              searchArr.map((product , index) => <ProductCard key={index} productObj={product}/>)
-              : "No products found"
-            }
+        <div className="flex justify-center gap-[0.7rem] flex-wrap">
+            {isLoading ? renderSkeleton() : renderProducts()}
+
         </div>
       </div>
     </div>

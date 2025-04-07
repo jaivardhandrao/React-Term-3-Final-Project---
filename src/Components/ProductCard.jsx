@@ -11,15 +11,15 @@ function ProductCard({productObj}) {
   const productDiscountedPrice = productObj.discount_price;
 
   return (
-    <div className="border border-gray-300 rounded-lg p-4 max-w-xs font-sans shadow-md">
+    <div className="my-[1rem] mx-[1rem] border border-gray-300 rounded-lg p-4 max-w-xs font-sans shadow-md hover:-translate-y-[2rem] transition duration-300">
       <img 
         src={productImageLink} 
         alt="Sorry , Image Not Found :(" 
-        className="w-64 h-64 object-cover rounded"
+        className="w-full h-64  rounded"
       />
       <a 
         href={productLink} 
-        className="font-bold text-base text-blue-700 block my-3 hover:underline"
+        className="font-bold text-base text-blue-700 block my-3  decoration-(none)"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -30,8 +30,8 @@ function ProductCard({productObj}) {
         <span className="text-gray-600 ml-2">({productNumberOfRatings})</span>
       </div>
       <div className="text-sm text-gray-700">
-        <span className="line-through mr-2">₹{productActualPrice}</span>
-        <span className="text-red-700 font-semibold">₹{productDiscountedPrice}</span>
+        <span className="line-through mr-2">{productActualPrice}</span>
+        <span className="text-red-700 font-semibold">{productDiscountedPrice}</span>
       </div>
     </div>
   )
