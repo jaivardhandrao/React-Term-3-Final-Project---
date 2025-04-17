@@ -11,8 +11,10 @@ function Search() {
   const [isLoading, setIsLoading] = useState(false);
 
   //The array to store the search results
-  const [searchArr , setSearchArr] = useState([])
-
+  const [searchArr , setSearchArr] = useState([]);
+  
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 50;
 
   function handleSearch() {
     // Set loading to true to indicate that a search is in progress
@@ -62,11 +64,14 @@ function Search() {
     }
   }
 
-
   function renderProducts() {
-    if (searchArr.length > 0) {
-      return searchArr.map((product, index) => (
-        <ProductCard key={index} productObj={product} />
+    const startIdx = (currentPage - 1) * itemsPerPage;
+    const endIdx = startIdx + itemsPerPage;
+    const currentItems = searchArr.slice(startIdx, endIdx);
+
+    if (currentItems.length > 0) {
+      return currentItems.map((product, index) => (
+        <ProductCard key={startIdx + index} productObj={product} />
       ));
     } else {
       return "No products found";
@@ -106,7 +111,11 @@ function Search() {
               className="flex-grow py-4 px-6 outline-none text-gray-700 text-lg"
             />
             <button 
-              onClick={handleSearch}
+              onClick={() => {
+                setSearchArr([]);
+                setCurrentPage(1);
+                handleSearch();
+              }}
               className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-4 px-8 transition duration-300 flex items-center"
             >
               <span className="mr-2">Search</span>
@@ -115,6 +124,8 @@ function Search() {
           </div>
           
         </div>
+
+        {/* Loading Indicator */}
         
         <div className="loading flex justify-center">
           {isLoading && (
@@ -126,12 +137,34 @@ function Search() {
           </div>
           )}
         </div>
+
+        {searchArr.length > itemsPerPage && (
+          <div className="flex justify-center mt-8 flex-wrap gap-2">
+            {Array.from({ length: Math.ceil(searchArr.length / itemsPerPage) }).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentPage(index + 1)}
+                className={`px-4 py-2 border rounded ${
+                  currentPage === index + 1
+                    ? 'bg-indigo-600 text-white'
+                    : 'bg-white text-indigo-600 border-indigo-600'
+                }`}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
+        )}
         
         {/* Products Grid */}
+
+        
         <div className="flex justify-center gap-[0.7rem] flex-wrap">
             {isLoading ? renderSkeleton() : renderProducts()}
 
         </div>
+        
+        
       </div>
     </div>
   );
