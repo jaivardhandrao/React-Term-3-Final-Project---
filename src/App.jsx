@@ -16,7 +16,6 @@ import LoadingInBetween from './Components/LoadingInBetween';
 function App() {
   return (
     <>
-
         <BrowserRouter>
           <NavBar />
           <main>
@@ -35,11 +34,11 @@ function App() {
 
 
 
-
     </>
   )
 }
 
 export default App
+
 
 

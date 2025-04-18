@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Papa from 'papaparse';
 import ProductCard from './ProductCard';
 import SkeletonProductCard from './SkeletonProductCard';
@@ -15,6 +15,13 @@ function Search() {
   
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 50;
+
+  const inputRef = useRef(null);
+
+  useEffect(()=>{
+    inputRef.current.focus();
+  } , [])
+
 
   function handleSearch() {
     // Set loading to true to indicate that a search is in progress
@@ -103,6 +110,7 @@ function Search() {
         <div className="searchDiv max-w-3xl mx-auto mb-12 rounded-full shadow-md border-2 border-transparent focus-within:border-indigo-500 transition duration-300">
           <div className="flex items-center bg-white p-4 rounded-full">
             <input 
+              ref={inputRef}
               type="text" 
               name="searchInput" 
               placeholder="Search for products..." 
@@ -140,6 +148,11 @@ function Search() {
           )}
         </div>
 
+        {!isLoading && searchArr.length > 0 && (
+          <div className="text-center mb-6">
+            <p className="text-lg text-indigo-700 font-semibold">{searchArr.length} results from Amazon matching ' {searchVal} '</p>
+          </div>
+        )}
         {searchArr.length > itemsPerPage && (
           <div className="flex justify-center mt-8 flex-wrap gap-2">
             {Array.from({ length: Math.ceil(searchArr.length / itemsPerPage) }).map((_, index) => (

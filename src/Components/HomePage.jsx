@@ -1,4 +1,4 @@
-import React , {useContext , useState , useEffect} from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { Link } from 'react-router';
 
 
@@ -6,6 +6,24 @@ const HomePage = () => {
   return (
     <div className="bg-gradient-to-br from-indigo-50 to-purple-50 min-h-screen">
       {/* Hero Section */}
+      <div className="container mx-auto px-6 pt-16">
+      <div className="flex justify-center mb-8">
+          <Link to="/search" className="w-full max-w-md">
+            <div className="relative group cursor-pointer">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <i className='bx bx-search text-indigo-600 text-xl'></i>
+              </div>
+              <input
+                type="text"
+                readOnly
+                className="w-full pl-10 pr-4 py-3 bg-white border border-indigo-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer placeholder:animate-pulse"
+                placeholder="Searching for items for your daily needs..."
+              />
+              <div className="absolute inset-0 rounded-lg group-hover:ring-2 group-hover:ring-indigo-400 transition-all duration-300"></div>
+            </div>
+          </Link>
+      </div>
+      </div>
       <div className="container mx-auto px-6 pt-16 pb-24">
         <div className="flex flex-col lg:flex-row items-center">
           <div className="lg:w-1/2">
@@ -17,21 +35,21 @@ const HomePage = () => {
             </p>
             <div className="flex gap-4">
               <Link to="/search">
-              <button className="px-6 py-3 bg-indigo-600 text-white rounded-lg shadow-lg hover:bg-indigo-700 transition duration-300">
-                Explore Collections
-              </button>
+                <button className="px-6 py-3 bg-indigo-600 text-white rounded-lg shadow-lg hover:bg-indigo-700 transition duration-300">
+                  Explore Collections
+                </button>
               </Link>
               <Link to={"/about"}>
-              <button className="px-6 py-3 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition duration-300">
-                Learn More about our TechStack 😉
-              </button>
+                <button className="px-6 py-3 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition duration-300">
+                  Learn More about our TechStack 😉
+                </button>
               </Link>
             </div>
           </div>
           <div className="lg:w-1/2 mt-12 mx-[1rem] lg:mt-0">
-            <img 
-              src="/src/assets/bannerHome.jpg" 
-              alt="Shopping Experience" 
+            <img
+              src="/src/assets/bannerHome.jpg"
+              alt="Shopping Experience"
               className="rounded-2xl shadow-xl"
             />
           </div>
