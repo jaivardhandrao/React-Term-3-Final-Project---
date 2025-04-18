@@ -23,11 +23,11 @@ export function ProductCard({ productObj }) {
       />
       <a
         href={productLink}
-        className="font-bold text-base text-blue-700 block my-3 hover:text-blue-900 transition-colors duration-200"
+        className="font-bold text-base text-blue-700 block my-3 hover:text-blue-900 transition-colors duration-200 min-h-[3.5rem] flex items-center"
         target="_blank"
         rel="noopener noreferrer"
       >
-        {productTitle}
+        {productTitle.length > 50 ? `${productTitle.slice(0, 47)}...` : productTitle}
       </a>
       <div className="mb-2 text-yellow-500">
         {'★★★★★☆☆☆☆☆'.slice(0, productRating) + '☆☆☆☆☆'.slice(0, 5 - productRating)}
@@ -35,7 +35,7 @@ export function ProductCard({ productObj }) {
       </div>
       <div className="text-sm text-gray-700">
         <span className="line-through mr-2">{productActualPrice}</span>
-        <span className="text-red-700 font-semibold">{productDiscountedPrice}</span>
+        <span className="text-red-700 text-lg font-semibold">{productDiscountedPrice}</span>
       </div>
       <button
         onClick={() => {

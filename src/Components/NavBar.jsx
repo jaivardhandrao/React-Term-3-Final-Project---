@@ -1,8 +1,19 @@
-import React, { useState } from 'react';
+import React , {useRef , useMemo , createContext , useContext , useState , useEffect} from 'react'
+
 import { Link } from 'react-router-dom';
+import MyCartContext from '../Contexts/MyCartContext';
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const { cartItems } = useContext(MyCartContext);
+
+  const [cartItemsCount , setCartItemsCount] = useState(0);
+
+  useEffect(() => {
+    setCartItemsCount(cartItems.length);
+  } , [cartItems])
+
 
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
@@ -39,11 +50,9 @@ const NavBar = () => {
             </Link>
             <Link to="/cart" className="relative group">
               <div className="p-2 bg-indigo-50 rounded-full group-hover:bg-indigo-100 transition duration-300">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                </svg>
+                <i className='bx bx-cart text-indigo-600 text-xl'></i>
                 <span className="absolute -top-1 -right-1 bg-indigo-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                  0
+                {cartItemsCount}
                 </span>
               </div>
             </Link>
@@ -108,11 +117,9 @@ const NavBar = () => {
               >
                 <span>Your Cart</span>
                 <div className="relative">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                  </svg>
+                  <i className='bx bx-cart text-indigo-600 text-xl'></i>
                   <span className="absolute -top-1 -right-1 bg-indigo-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                    0
+                    {cartItemsCount}
                   </span>
                 </div>
               </Link>

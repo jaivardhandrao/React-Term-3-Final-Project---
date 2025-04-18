@@ -9,6 +9,7 @@ const Search = lazy(() => import("./Components/Search"));
 const YourCart = lazy(() => import("./Components/YourCart"));
 const NotFound = lazy(() => import("./Components/NotFound"));
 const Shop = lazy(() => import("./Components/Shop"));
+import LoadingInBetween from './Components/LoadingInBetween';
 
 
 
@@ -17,21 +18,19 @@ function App() {
     <>
 
         <BrowserRouter>
-
           <NavBar />
           <main>
-            <Routes>
-              <Route path='/' element={<HomePage />} />
-              <Route path='/about' element={<AboutPage />} />
-              <Route path='/search' element={<Search />} />
-              <Route path='/cart' element={<YourCart />} />
-              <Route path='/shop' element={<Shop />} />
-              <Route path='/*' element={<NotFound />} />
-            </Routes>
-
+            <Suspense fallback={<LoadingInBetween />}>
+              <Routes>
+                <Route path='/' element={<HomePage />} />
+                <Route path='/about' element={<AboutPage />} />
+                <Route path='/search' element={<Search />} />
+                <Route path='/cart' element={<YourCart />} />
+                <Route path='/shop' element={<Shop />} />
+                <Route path='/*' element={<NotFound />} />
+              </Routes>
+            </Suspense>
           </main>
-
-
         </BrowserRouter>
 
 
@@ -42,3 +41,5 @@ function App() {
 }
 
 export default App
+
+

@@ -100,15 +100,18 @@ function Search() {
         </div>
         
         {/* Search Input */}
-        <div className="searchDiv max-w-3xl mx-auto mb-12">
-          <div className="flex items-center bg-white rounded-lg shadow-md overflow-hidden border-2 border-transparent focus-within:border-indigo-500 transition duration-300">
+        <div className="searchDiv max-w-3xl mx-auto mb-12 rounded-full shadow-md border-2 border-transparent focus-within:border-indigo-500 transition duration-300">
+          <div className="flex items-center bg-white p-4 rounded-full">
             <input 
               type="text" 
               name="searchInput" 
               placeholder="Search for products..." 
               value={searchVal} 
               onChange={(e) => setSearchVal(e.target.value)}
-              className="flex-grow py-4 px-6 outline-none text-gray-700 text-lg"
+              onKeyDown={(e) => {
+                if(e.key === "Enter") handleSearch();
+              }}
+              className="flex-grow py-2 px-4 outline-none text-gray-700 text-lg rounded-full"
             />
             <button 
               onClick={() => {
@@ -116,13 +119,12 @@ function Search() {
                 setCurrentPage(1);
                 handleSearch();
               }}
-              className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-4 px-8 transition duration-300 flex items-center"
+              className="w-[10em] h-[3em] bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-6 py-2 rounded-full transition duration-300 flex items-center justify-center"
             >
               <span className="mr-2">Search</span>
               <i className='bx bx-search text-[1.3rem]'></i>
             </button>
           </div>
-          
         </div>
 
         {/* Loading Indicator */}
@@ -170,4 +172,6 @@ function Search() {
   );
 }
 
-export default Search;
+export default React.memo(Search);
+
+

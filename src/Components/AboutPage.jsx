@@ -84,6 +84,7 @@ const AboutPage = () => {
               <ul className="space-y-2 text-gray-700">
                 <li>• Kaggle Amazon dataset integration</li>
                 <li>• Elasticsearch for fast product search</li>
+                <li>• PapaParse for CSV File reading</li>
               </ul>
             </div>
           </div>

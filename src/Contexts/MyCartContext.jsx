@@ -22,7 +22,10 @@ export function MyCartProvider({ children }) {
   }
 
   function removeFromCart(item) {
-    setCartItems((prevItems) => prevItems.filter((cartItem) => cartItem.id !== item.id));
+    console.log("Removing item with id:", item.name);
+    setCartItems((prevItems) =>
+      prevItems.filter((cartItem) => cartItem.name !== item.name)
+    );
   }
 
   return (
