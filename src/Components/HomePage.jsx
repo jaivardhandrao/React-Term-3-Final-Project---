@@ -103,9 +103,8 @@ const HomePage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-white p-8 rounded-xl shadow-md">
               <div className="flex items-center mb-4">
-                <img src="/api/placeholder/64/64" alt="Customer" className="w-12 h-12 rounded-full mr-4" />
                 <div>
-                  <h4 className="font-bold text-indigo-900">Emma Thompson</h4>
+                  <h4 className="font-bold text-indigo-900">Jaivardhan D Rao</h4>
                   <p className="text-gray-600">Loyal Customer</p>
                 </div>
               </div>
@@ -115,9 +114,8 @@ const HomePage = () => {
             </div>
             <div className="bg-white p-8 rounded-xl shadow-md">
               <div className="flex items-center mb-4">
-                <img src="/api/placeholder/64/64" alt="Customer" className="w-12 h-12 rounded-full mr-4" />
                 <div>
-                  <h4 className="font-bold text-indigo-900">Michael Chen</h4>
+                  <h4 className="font-bold text-indigo-900">Alex</h4>
                   <p className="text-gray-600">Frequent Shopper</p>
                 </div>
               </div>
@@ -126,21 +124,6 @@ const HomePage = () => {
               </p>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Banner Section */}
-      <div className="bg-indigo-600 py-20">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">
-            Join the Global Shopping Revolution
-          </h2>
-          <p className="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
-            Sign up today and get exclusive access to special offers, new arrivals, and limited-edition products from around the world.
-          </p>
-          <button className="px-8 py-3 bg-white text-indigo-600 font-bold rounded-lg shadow-lg hover:bg-indigo-50 transition duration-300">
-            Sign Up Now
-          </button>
         </div>
       </div>
 

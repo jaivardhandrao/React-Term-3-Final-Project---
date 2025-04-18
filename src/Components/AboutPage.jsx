@@ -30,7 +30,7 @@ const AboutPage = () => {
             </div>
             <div className="lg:w-1/2">
               <img 
-                src="/api/placeholder/600/400" 
+                src="/src/assets/ourMission.avif" 
                 alt="Our Mission" 
                 className="rounded-2xl shadow-xl"
               />

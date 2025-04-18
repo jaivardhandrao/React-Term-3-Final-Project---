@@ -107,8 +107,8 @@ function Search() {
         </div>
         
         {/* Search Input */}
-        <div className="searchDiv max-w-3xl mx-auto mb-12 rounded-full shadow-md border-2 border-transparent focus-within:border-indigo-500 transition duration-300">
-          <div className="flex items-center bg-white p-4 rounded-full">
+        <div className="searchDiv max-w-3xl mx-auto mb-12 rounded-2xl shadow-md border-2 border-transparent focus-within:border-indigo-500 transition duration-300 px-2 sm:px-0">
+          <div className="flex flex-col sm:flex-row items-center bg-white p-4 gap-2 sm:gap-0 rounded-2xl">
             <input 
               ref={inputRef}
               type="text" 
@@ -119,7 +119,7 @@ function Search() {
               onKeyDown={(e) => {
                 if(e.key === "Enter") handleSearch();
               }}
-              className="flex-grow py-2 px-4 outline-none text-gray-700 text-lg rounded-full"
+              className="w-full py-2 px-4 outline-none text-gray-700 text-base sm:text-lg rounded-xl"
             />
             <button 
               onClick={() => {
@@ -127,7 +127,7 @@ function Search() {
                 setCurrentPage(1);
                 handleSearch();
               }}
-              className="w-[10em] h-[3em] bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-6 py-2 rounded-full transition duration-300 flex items-center justify-center"
+              className="w-full sm:w-[10em] h-[3em] bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-6 py-2 rounded-xl transition duration-300 flex items-center justify-center"
             >
               <span className="mr-2">Search</span>
               <i className='bx bx-search text-[1.3rem]'></i>
@@ -186,5 +186,3 @@ function Search() {
 }
 
 export default React.memo(Search);
-
-

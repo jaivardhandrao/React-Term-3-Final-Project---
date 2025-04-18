@@ -14,7 +14,7 @@ function CartProductCard({ productObj }) {
     const {removeFromCart } = useContext(MyCartContext);
 
     return (
-        <div className={`relative my-[1rem] flex w-[80vw] mx-auto gap-4 p-4 border border-gray-300 rounded-lg shadow-sm transition-opacity duration-300 ${isRemoving ? 'opacity-50' : 'opacity-100'}`}>
+        <div className={`relative my-[1rem] flex flex-col sm:flex-row w-[90vw] sm:w-[80vw] mx-auto gap-4 p-2 sm:p-4 border border-gray-300 rounded-lg shadow-sm transition-opacity duration-300 ${isRemoving ? 'opacity-50' : 'opacity-100'}`}>
             {isRemoving && (
                 <div className="absolute inset-0 bg-white bg-opacity-70 flex items-center justify-center rounded-lg z-10">
                     <div className="flex flex-col items-center text-indigo-600 text-sm font-medium">
@@ -26,8 +26,8 @@ function CartProductCard({ productObj }) {
                     </div>
                 </div>
             )}
-            <img src={productImageLink} alt={productTitle} className="w-24 h-24 object-contain" />
-            <div className="flex flex-col justify-between w-full">
+            <img src={productImageLink} alt={productTitle} className="w-20 h-20 sm:w-24 sm:h-24 object-contain" />
+            <div className="flex flex-col justify-between w-full mt-2 sm:mt-0">
                 <h2 className="text-lg font-semibold text-gray-800 hover:text-indigo-600 transition">
                     {productTitle}
                 </h2>
@@ -46,9 +46,8 @@ function CartProductCard({ productObj }) {
                     removeFromCart(productObj);
                     setIsRemoving(false);
                 }, 500);
-
             }}
-            className=" cursor-pointer flex items-center text-red-500 justify-center self-end w-fit px-2 py-1 bg-white border border-red-500 rounded-full hover:bg-red-500 transition-colors duration-200 hover:text-white">
+            className=" cursor-pointer flex items-center text-red-500 justify-center self-end w-fit px-2 py-1 bg-white border border-red-500 rounded-full hover:bg-red-500 transition-colors duration-200 hover:text-white mt-2 sm:mt-0">
                 <span className='mr-1'>Remove</span>
                 <i className='bx bx-trash-alt'></i>
             </button>
