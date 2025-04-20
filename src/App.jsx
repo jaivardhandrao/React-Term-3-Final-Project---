@@ -8,7 +8,7 @@ const AboutPage = lazy(() => import("./Components/AboutPage"));
 const Search = lazy(() => import("./Components/Search"));
 const YourCart = lazy(() => import("./Components/YourCart"));
 const NotFound = lazy(() => import("./Components/NotFound"));
-const Shop = lazy(() => import("./Components/Shop"));
+const AskAi = lazy(() => import("./Components/AskAi"));
 import LoadingInBetween from './Components/LoadingInBetween';
 
 
@@ -25,7 +25,7 @@ function App() {
                 <Route path='/about' element={<AboutPage />} />
                 <Route path='/search' element={<Search />} />
                 <Route path='/cart' element={<YourCart />} />
-                <Route path='/shop' element={<Shop />} />
+                <Route path='/askai' element={<AskAi />} />
                 <Route path='/*' element={<NotFound />} />
               </Routes>
             </Suspense>

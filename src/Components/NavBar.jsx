@@ -38,8 +38,8 @@ const NavBar = () => {
               <Link to="/" className={`text-gray-700 hover:text-indigo-600 transition duration-300 ${location.pathname === '/' ? 'text-indigo-700 underline underline-offset-8 decoration-2' : ''}`}>
                 Home
               </Link>
-              <Link to="/shop" className={`text-gray-700 hover:text-indigo-600 transition duration-300 ${location.pathname === '/shop' ? 'text-indigo-700 underline underline-offset-8 decoration-2' : ''}`}>
-                Shop
+              <Link to="/askai" className={`text-gray-700 hover:text-indigo-600 transition duration-300 ${location.pathname === '/askai' ? 'text-indigo-700 underline underline-offset-8 decoration-2' : ''}`}>
+              Ask AI
               </Link>
               <Link to="/search" className={`text-gray-700 hover:text-indigo-600 transition duration-300 ${location.pathname === '/search' ? 'text-indigo-700 underline underline-offset-8 decoration-2' : ''}`}>
                 Search
@@ -85,11 +85,11 @@ const NavBar = () => {
                 Home
               </Link>
               <Link 
-                to="/shop" 
+                to="/askai" 
                 className="text-gray-700 hover:text-indigo-600 transition duration-300"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Shop
+                Ask AI
               </Link>
               <Link 
                 to="/search" 

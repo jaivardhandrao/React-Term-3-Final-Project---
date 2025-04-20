@@ -56,7 +56,7 @@ const AboutPage = () => {
               <ul className="space-y-2 text-gray-700">
                 <li>• React.js for dynamic UI components</li>
                 <li>• Tailwind CSS for responsive styling</li>
-                <li>• Redux for state management</li>
+                <li>• Context API for state management</li>
                 <li>• React Router for navigation</li>
                 <li>• Axios for API requests</li>
               </ul>
