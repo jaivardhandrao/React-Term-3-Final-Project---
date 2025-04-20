@@ -6,9 +6,12 @@ const HomePage = () => {
   return (
     <div className="bg-gradient-to-br from-indigo-50 to-purple-50 min-h-screen">
       {/* Hero Section */}
-      <div className="container mx-auto px-6 pt-16">
-      <div className="flex justify-center mb-8">
-          <Link to="/search" className="w-full max-w-md">
+      <div className="container mx-auto px-6 pt-16 flex items-center justify-center">
+        <div className="w-full max-w-md">
+          <h1 className="text-3xl font-bold text-indigo-900 text-center mb-6">
+            Shop Here
+          </h1>
+          <Link to="/search">
             <div className="relative group cursor-pointer">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <i className='bx bx-search text-indigo-600 text-xl'></i>
@@ -16,13 +19,13 @@ const HomePage = () => {
               <input
                 type="text"
                 readOnly
-                className="w-full pl-10 pr-4 py-3 bg-white border border-indigo-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer placeholder:animate-pulse"
+                className="w-full pl-10 pr-4 py-3 bg-white border border-indigo-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer placeholder:animate-pulse text-center"
                 placeholder="Searching for items for your daily needs..."
               />
               <div className="absolute inset-0 rounded-lg group-hover:ring-2 group-hover:ring-indigo-400 transition-all duration-300"></div>
             </div>
           </Link>
-      </div>
+        </div>
       </div>
       <div className="container mx-auto px-6 pt-16 pb-24">
         <div className="flex flex-col lg:flex-row items-center">
