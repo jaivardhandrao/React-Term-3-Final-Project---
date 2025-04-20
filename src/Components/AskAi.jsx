@@ -5,7 +5,7 @@ const AskAi = () => {
   const [response, setResponse] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const API_KEY = 'AIzaSyDCK86CWhdwJouK-S7OTrmyzyUpnki1U20';
+  const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
   const API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-thinking-exp-01-21:generateContent';
 
   const handleSubmit = async (e) => {
