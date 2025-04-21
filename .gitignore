@@ -23,3 +23,5 @@ dist-ssr
 *.sln
 *.sw?
 public/all_data.csv
+
+.env
