@@ -51,8 +51,7 @@
  vite/
  ├── public/             # Static assets
  ├── src/
- │   ├── components/     # Shared reusable components (e.g., Navbar, Footer, ProductCard)
- │   ├── pages/          # Page-level views (Home, About, AskAI, Search, Cart)
+ │   ├── components/     # Shared reusable components and pages (e.g., Navbar, ProductCard , AskAI Page , Search Page , Your Cart page)
  │   ├── context/        # React Context for cart and auth management
  │   ├── App.jsx         # Main app component with route configuration
  │   └── main.jsx        # Entry point for ReactDOM rendering
